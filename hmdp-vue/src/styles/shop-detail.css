@@ -1,0 +1,5 @@
+/* Keep the coupon amount visually closer to the orange ticket edge. */
+.voucher-card .voucher-value {
+  transform: translateX(-10px);
+  white-space: nowrap;
+}
