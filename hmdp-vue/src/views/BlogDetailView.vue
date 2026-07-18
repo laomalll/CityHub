@@ -223,7 +223,7 @@ onBeforeUnmount(() => {
               </div>
               <div class="comment-actions">
                 <button type="button" class="comment-reply-btn" @click="startReply(comment)">回复</button>
-                <button type="button" class="comment-like-btn" :class="{ active: Number(comment.liked) > 0 }" @click="likeComment(comment)"><b>♥</b><span>{{ comment.liked || 0 }}</span></button>
+                <button type="button" class="comment-like-btn" :class="{ active: comment.isLike }" @click="likeComment(comment)"><b>♥</b><span>{{ comment.liked || 0 }}</span></button>
               </div>
 
               <div v-if="comment.replies?.length" class="comment-replies">
@@ -235,7 +235,7 @@ onBeforeUnmount(() => {
                     <div v-if="reply.images" class="comment-pictures"><img v-for="img in reply.images.split(',')" :key="img" :src="img" alt="回复图片" /></div>
                     <div class="comment-actions">
                       <button type="button" class="comment-reply-btn" @click="startReply(reply)">回复</button>
-                      <button type="button" class="comment-like-btn" :class="{ active: Number(reply.liked) > 0 }" @click="likeComment(reply)"><b>♥</b><span>{{ reply.liked || 0 }}</span></button>
+                      <button type="button" class="comment-like-btn" :class="{ active: reply.isLike }" @click="likeComment(reply)"><b>♥</b><span>{{ reply.liked || 0 }}</span></button>
                     </div>
                   </div>
                 </article>
