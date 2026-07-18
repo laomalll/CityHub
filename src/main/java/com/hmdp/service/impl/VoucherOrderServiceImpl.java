@@ -153,7 +153,7 @@ public class VoucherOrderServiceImpl extends ServiceImpl<VoucherOrderMapper, Vou
         rabbitTemplate.convertAndSend(MqConstants.EXCHANGE_ORDER_DELAY, MqConstants.ROUTING_KEY_ORDER_DELAY, voucherOrderMessage, new MessagePostProcessor() {
             @Override
             public Message postProcessMessage(Message message) throws AmqpException {
-                message.getMessageProperties().setDelay(300000); // 设置延迟时间，300000毫秒即5分钟
+                message.getMessageProperties().setDelayLong(300000L); // 设置延迟时间，300000毫秒即5分钟
                 return message;
             }
         });
